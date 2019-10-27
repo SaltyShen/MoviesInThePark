@@ -2,39 +2,33 @@
 <html>
 
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width">
-	<title>3 screen app</title>
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-	 crossorigin="anonymous">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>3 screen app</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/…/…/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+  crossorigin="anonymous">
 
-
-	<style>
-		.content {
-			display: none;
-			margin: 1em;
-		}
-	</style>
+  <style>
+    .content {
+    display: none;
+    margin: 1em;
+  }
+  </style>
 
 </head>
 
 <body>
-	<!-- navigation bar -->
-	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-
-    <a class="navbar-brand" href="#"></a>
-    <img src="img/icon.png" style="height: 100px; width: 100px;" >
-    <span style ="display: inline-block;"><</span>
-    </a>
-
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-    </button>
+<!-- navigation bar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#"><img src="img/favicon.png"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+  <span class="navbar-toggler-icon"></span>
+  </button>
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link" href="#home">Home <span class="sr-only">(current)</span></a>
-      </li>
+      <a class="nav-link" href="#home">Home <span class="sr-only">(current)</span></a>
+        </li>
       <li class="nav-item">
         <a class="nav-link" href="#screen2">History</a>
       </li>
@@ -42,58 +36,85 @@
         <a class="nav-link" href="#about">About</a>
       </li>
     </ul>
-  </div>
-  </nav>
+</div>
+</nav>
 
-  <!-- the content divs -->
-  <div class="content" id="home">
-    <h2>
-      Chicago Park District: Movies in the Park 2019
-    <h2>
-    <script>
-      
-    </script>
-  </div>
-  <div class="content" id="screen2">
-    <h2>
-      Past Queries
-    </h2>
-  </div>
-  <div class="content" id="about">
-    <h2>
-      Welcome!
-    </h2>
-  </div>
+<!-- the content divs -->
+<div class="content" id="home">
+  <h2>
+  Chicago Park District: Movies in the Park 2019
+  <h2>
+  <div>
+    <h6>
+      Enter Data here
+      <ul>
+        Query Field Here : Date
+      </ul>
+      <ul>
+        Query Field Here : Title
+      </ul>
+      <ul>
+        Query Field Here : Catagory
+      </ul>
+      <ul>
+        Query Field Here : Range
+      </ul>
+    </h6>
 
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
-      
-
-  
+  </div>
+  <div> Insert Work Here </h2>
   <script>
-    hideScreens();
 
-
-    function hideScreens() {
-      $(".content").hide();
+    $.ajax({
+      url: "https://data.cityofchicago.org/resource/a7gu-2qz6.json",
+      type: "GET",
+      data: {
+      "$limit" : 5000,
+      "$$app_token" : "bnpas9uak5iadao302o2bpoe6"
     }
 
-
-    $(document).ready(function() {
-
-
-
-      $(".nav-link").on("click", function(){
-        hideScreens();
-        var target = $(this).attr("href");
-        $(target).show();
-        $(target).load("page_content/_" + target.replace("#","") + ".html");
-      });
-
+    }).done(function(data) {
+      alert("Retrieved " + data.length + " records from the dataset!");
+      console.log(data);
     });
+
   </script>
+</div>
+<div class="content" id="screen2">
+  <h2>
+  Past Queries
+  </h2>
+  <div>
+    Insert Queries here
+  </div>
+</div>
+<div class="content" id="about">
+  <h2>
+  Welcome!
+  </h2>
+</div>
 
+<script src="https://cdnjs.cloudflare.com/…/l…/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/…/tw…/4.3.1/js/bootstrap.min.js"></script>
 
-  </body>
+<script>
+hideScreens();
+
+function hideScreens() {
+  $(".content").hide();
+  }
+
+  $(document).ready(function() {
+
+  $(".nav-link").on("click", function(){
+  hideScreens();
+  var target = $(this).attr("href");
+  $(target).show();
+  $(target).load("page_content/_" + target.replace("#","") + ".html");
+  });
+
+  });
+</script>
+
+</body>
 </html>
