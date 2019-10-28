@@ -2,119 +2,194 @@
 <html>
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>3 screen app</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/…/…/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-  crossorigin="anonymous">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+  <title>Chicago Movie in The Park</title>
+  <link rel="icon" 
+      type="image/png" 
+      href="img/icon.png">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+   crossorigin="anonymous">
+   
+   <!-- load angular -->
+   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
 
-  <style>
-    .content {
-    display: none;
-    margin: 1em;
-  }
-  </style>
+	<style>
+		.content {
+			display: none;
+			margin: 1em;
+		}
+    .img {
+      image-orientation: from-image;
+      float : left;
+    }
+    .rotate-90 {
+      -webkit-transform: rotate(-90deg);
+          -ms-transform: rotate(-90deg);
+              transform: rotate(-90deg);
+    }
+
+	</style>
 
 </head>
 
 <body>
-<!-- navigation bar -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#"><img src="img/favicon.png"></a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-  <span class="navbar-toggler-icon"></span>
-  </button>
+	<!-- navigation bar -->
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<a class="navbar-brand" href="#"><img src="img/icon.png" style="width: 75px; height: 75px;"></a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
       <li class="nav-item">
-      <a class="nav-link" href="#home">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="#search" style="font-family:'Courier New', Courier, monospace; "><strong>Search </strong><span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#history" style="font-family: 'Courier New', Courier, monospace;"><strong>History List</strong></a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" href="#map" style="font-family: 'Courier New', Courier, monospace;"><strong >Map </strong></a>
         </li>
       <li class="nav-item">
-        <a class="nav-link" href="#screen2">History</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#about">About</a>
+        <a class="nav-link" href="#about" style="font-family: 'Courier New', Courier, monospace;"><strong>About</strong></a>
       </li>
     </ul>
-</div>
-</nav>
+  </div>
+  </nav>
 
-<!-- the content divs -->
-<div class="content" id="home">
-  <h2>
-  Chicago Park District: Movies in the Park 2019
-  <h2>
-  <div>
-    <h6>
-      Enter Data here
-      <ul>
-        Query Field Here : Date
-      </ul>
-      <ul>
-        Query Field Here : Title
-      </ul>
-      <ul>
-        Query Field Here : Catagory
-      </ul>
-      <ul>
-        Query Field Here : Range
-      </ul>
-    </h6>
+  <!-- the content divs -->
+  <div class="content" id="search">
+    <div class="container" ng-app="Chicago Movies in the Park" ng-controller="MovieSearch" style="font-family: 'Courier New', Courier, monospace;">
+      <h2>
+        Chicago Park District: Movies in the Park 2019
+      </h2>
+
+      <p> Park Name: <input type="text" ng-model="query" class="form-control"></p>
+      <p> Movie Title: <input type="text" ng-model="query" class="form-control"></p>
+      <p> Day of the Week: <input type="text" ng-model="query" class="form-control"></p>
+      <p> Check For Current Movies: <input type = "checkbox"></p>
+
+      <table class = "table" style="width:100%s">
+        <tr>
+          <th><a href = "" ng-click="sortBy='date'">Park Name</a></th>
+          <th><a href = "" ng-click="sortBy='title'">Title</a></th>
+          <th><a href = "" ng-click="sortBy='day'">Day</a></th>
+        </tr>
+        <tr ng-repeat="movie in moviesdatabase | orderBy:sortBy | filter:query ">
+          <td>{{movie.park}}</td>
+          <td>{{movie.title}}</td>
+          <td>{{movie.day}}</td>
+
+        </tr>
+      </table>
+
+      <script> src="js/moviesdatabase.js"</script>
+    </div>
+  </div>
+    <!--<script>
+        using System;
+        using System.Linq;
+        using SODA;
+
+        var client = new SodaClient("https://data.cityofchicago.org/resource/7piw-z6r6.json", "bnpas9uak5iadao302o2bpoe6");
+        
+        // Get a reference to the resource itself
+        // The result (a Resouce object) is a generic type
+        // The type parameter represents the underlying rows of the resource
+        // and can be any JSON-serializable class
+        var dataset = client.GetResource("e2v8-k3us");
+        
+        // Resource objects read their own data
+        var rows = dataset.GetRows(limit: 5000);
+        
+        Console.WriteLine("Got {0} results. Dumping first results:", rows.Count());
+        
+        foreach (var keyValue in rows.First())
+        {
+            Console.WriteLine(keyValue);
+        }
+    </script>-->
 
   </div>
-  <div> Insert Work Here </h2>
-  <script>
+  <div class="content" id="history" style="font-family: 'Courier New', Courier, monospace;">
+    <h2>
+      Past Queries
+    </h2>
+  </div>
+  <div class="content" id="map" style="font-family: 'Courier New', Courier, monospace;">
+      <h2>
+        Map API Here
+      </h2>
+    </div>
+  <div class="content" id="about">
+      <h2 style = "font-family:'Courier New', Courier, monospace" style="color:midnightblue"><b>Welcome! </b></h2>
+    <div style = "font-family:'Courier New', Courier, monospace">
+      <h4 style = "font-family:'Courier New', Courier, monospace" style="color:dodgerblue"> About Me:  </h4>
+        <br>
+        <br>
+        <br>
+        <img src="img/Portrait.JPG" width="300" class="rotate-90" float = "left"/>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>My name is Shen Wang and I am the developer of this web app. I am a Computer Science and Mathematics major currently enrolled at
+        <br>The University of Illinois at Chicago. I am currently in IT202 to learn about web technologies such as HTML, CSS, Angular, MySQL and 
+        <br>other fun things. I have a strong understanding of many of the main computer languages such as:
+        <br>
+        <br>      ><a style=color:darkcyan>Java</a> - Primary Language
+        <br>      ><a style=color:darkcyan>C++</a> - Secondy Language
+        <br>      ><a style=color:darkcyan>Python</a> - Tertiary Language
+        <!--<br><img href = "img/javaicon.png" style="width: 50px; height: 50px;"/>
+        <br><img href = "img/cppicon.png" style="width: 50px; height: 50px;"/>
+        <br><img href = "img/pythonicon.png" style="width: 50px; height: 50px;"/>-->
+        <br>
+        <br>As well as some computational and functional languages such as:
+        <br>
+        <br>      ><a style=color:darkcyan>OCAML</a> - Language Design 
+        <br>      ><a style=color:darkcyan>CGAL</a> - Computational Geometry and Algorithms
+        <br>      ><a style=color:darkcyan>SAGE MATH</a> - Scientific Computer Language for Computation
+        <br>      ><a style=color:darkcyan>R</a> - Statistical Modeling Language
+        <br>
+        <br><h6>Thank you for viewing my app!</h6>
 
-    $.ajax({
-      url: "https://data.cityofchicago.org/resource/a7gu-2qz6.json",
-      type: "GET",
-      data: {
-      "$limit" : 5000,
-      "$$app_token" : "bnpas9uak5iadao302o2bpoe6"
+        <div><strong>
+          Connect with me on my Linkedin : <a href = "https://www.linkedin.com/in/ShenHWang">here!</a>
+          <br>Check out my github! : <a href = "https://www.github.com/SaltyShen">SaltyShen@github.com</a>
+          <br>Email me at : peterhuiwang1995@gmail.com
+        </strong></div>
+</div>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+      
+
+  
+  <script>
+    hideScreens();
+
+
+    function hideScreens() {
+      $(".content").hide();
     }
 
-    }).done(function(data) {
-      alert("Retrieved " + data.length + " records from the dataset!");
-      console.log(data);
+
+    $(document).ready(function() {
+
+
+
+      $(".nav-link").on("click", function(){
+        hideScreens();
+        var target = $(this).attr("href");
+        $(target).show();
+        $(target).load("page_content/_" + target.replace("#","") + ".html");
+      });
+
     });
-
   </script>
-</div>
-<div class="content" id="screen2">
-  <h2>
-  Past Queries
-  </h2>
-  <div>
-    Insert Queries here
-  </div>
-</div>
-<div class="content" id="about">
-  <h2>
-  Welcome!
-  </h2>
-</div>
 
-<script src="https://cdnjs.cloudflare.com/…/l…/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/…/tw…/4.3.1/js/bootstrap.min.js"></script>
 
-<script>
-hideScreens();
-
-function hideScreens() {
-  $(".content").hide();
-  }
-
-  $(document).ready(function() {
-
-  $(".nav-link").on("click", function(){
-  hideScreens();
-  var target = $(this).attr("href");
-  $(target).show();
-  $(target).load("page_content/_" + target.replace("#","") + ".html");
-  });
-
-  });
-</script>
-
-</body>
+  </body>
 </html>
