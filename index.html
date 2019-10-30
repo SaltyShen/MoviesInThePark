@@ -77,9 +77,9 @@
       <script src = "js/moviesdatabase.js"></script>
 
       <form action="#" id="inputform" onsubmit="return ValidationEvent()">
-        <p> <input type="text" class="form-control" id = "park" placeholder = "Enter Park Name: "></p>
-        <p> <input type="text" class="form-control" id = "title" placeholder = "Enter Movie Title: "></p>
-        <p> <input type="text" class="form-control" id = "day" placeholder="Enter the Day of The Movie: (ig. Fri, Sat, Sun) "></p>
+        <p> <input type="text" class="form-control" id = "park" value = "Wicker Park">Park</p>
+        <p> <input type="text" class="form-control" id = "title" value = "Les Miserables (1998)">Title</p>
+        <p> <input type="text" class="form-control" id = "day" value = "Thu">Enter the Day of The Movie: (ig. Fri, Sat, Sun)</p>
         <p><button type="submit" value = "Go!">Go!</button>
         Check For Upcoming Movies: <input type = "checkbox" id="upcomingonly"></p>
       </form>
@@ -92,25 +92,26 @@
         Query
       </strong></h2>
       <div class="container">
+
         <table class = "table" style="width:100%s" id = "movietable">
-          <th>Park</th>
-          <th>Title</th>
-          <th>Day</th>
-      <!--   <tr>
-              <th><a href = "" ng-click = "sortBy = 'date'">Park Name</a></th>
+
+          <tr>
+              <th><a href = "" ng-click = "sortBy = 'park'">Park Name</a></th>
               <th><a href = "" ng-click = "sortBy = 'title'">Title</a></th>
               <th><a href = "" ng-click = "sortBy ='day'">Day</a></th>
-            </tr>
+          </tr>
     
-            <tr ng-repeat="movie in moviesdatabase | orderBy:sortBy | filter:query ">
+            <tr ng-repeat="movie in moviesdatabase | orderBy:sortBy | filter:query">
     
               <td></td>
               <td></td>
               <td></td>
     
-            </tr> -->
+            </tr> 
             
           </table>
+
+          <p id = "placeholder"> <p>
         </div>
   </div>
   <div class="content" id="map">
