@@ -8,10 +8,12 @@
   <link rel="icon" 
       type="image/png" 
       href="img/icon.png">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-   crossorigin="anonymous">
-  <script src="js/jquery-3.4.1.min.js"></script>
-   
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC7MinVe2U_cNHvcun30I1EDEIUme14pv4&callback=initMap" async defer></script> 
+
    <!-- load angular -->
 	<style>
 		.content {
@@ -61,40 +63,56 @@
       </strong></h2>
   </div>
 
-  <div class="content" id="search">
-    <div class="container" ng-app="Chicago Movies in the Park" ng-controller="MovieSearch" style="font-family: 'Courier New', Courier, monospace;">
-      <h2 style="color: steelblue;"><strong>
-        Chicago Park District: Movies in the Park 2019
-      </strong></h2>
+  <div class="content" id="search" style="font-family: 'Courier New', Courier, monospace;">
+    <div class="container" style="font-family: 'Courier New', Courier, monospace;">
+      
+      <h1 style="color: steelblue;"><strong>
+        Movies in the Park 2019
+      </strong></h1>
       
       <form id = "input" method = "get" id = "form1">
-        <p> Park Name: <input type="text" ng-model="query" class="form-control" id = "park"></p>
-        <p> Movie Title: <input type="text" ng-model="query" class="form-control" id = "title"></p>
-        <p> Day of the Week: <input type="text" ng-model="query" class="form-control" id = "day"></p>
-        <p> Check For Upcoming Movies: <input type = "checkbox" id="upcomingonly"></p>
+        <p> <input type="text" ng-model="query" class="form-control" id = "park" placeholder = "Enter Park Name: "></p>
+        <p> <input type="text" ng-model="query" class="form-control" id = "title" placeholder = "Enter Movie Title: "></p>
+        <p> <input type="text" ng-model="query" class="form-control" id = "day" placeholder="Enter the Day of The Movie: (ig. Fri, Sat, Sun) "></p>
+        <p><button type="submit" value = "Go!"> </button>
+        Check For Upcoming Movies: <input type = "checkbox" id="upcomingonly"></p>
       </form>
+      
+      <script type="text/javascript">
+      park = $('#park').val();
+      title = $('#title').val();
+      day = $('#day').val();
+      $.getJSON = ("https://data.cityofchicago.org/resource/7piw-z6r6.json", function(data) {
+          console.log(data);
+          var queries = '';
+          $.each(data, function(key, value){
+              queries += '<tr>';
+              queries += '<td>'+value.park+'<td>';
+              queries += '<td>'+value.title+'<td>';
+              queries += '<td>'+value.day+'<td>';
+            });
+            $('#movietable').append(queries);
+        });
+       </script>
 
-      <p> <input type="submit" form="form1" value = "Go!"> </button></p>
-
-      <table class = "table" style="width:100%s">
+      <table class = "table" style="width:100%s" id = "movietable">
 
         <tr>
-          <th><a href = "" ng-click="sortBy='date'">Park Name</a></th>
-          <th><a href = "" ng-click="sortBy='title'">Title</a></th>
-          <th><a href = "" ng-click="sortBy='day'">Day</a></th>
+          <th><a href = "" ng-click = "sortBy = 'date'">Park Name</a></th>
+          <th><a href = "" ng-click = "sortBy = 'title'">Title</a></th>
+          <th><a href = "" ng-click = "sortBy ='day'">Day</a></th>
         </tr>
 
         <tr ng-repeat="movie in moviesdatabase | orderBy:sortBy | filter:query ">
 
-          <td>{{movie.park}}</td>
-          <td>{{movie.title}}</td>
-          <td>{{movie.day}}</td>
+          <td></td>
+          <td></td>
+          <td></td>
 
         </tr>
        </table>
 
-      <script src="js/moviesdatabase.js"></script>
-    </div>
+     </div>
    </div>
 
   <div class="content" id="history" style="font-family: 'Courier New', Courier, monospace;">
@@ -117,8 +135,6 @@
           }
        </script>
 
-      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC7MinVe2U_cNHvcun30I1EDEIUme14pv4&callback=initMap"
-              async defer></script>
     </div>
   <div class="content" id="about">
       <h2 style = "font-family:'Courier New', Courier, monospace; color:steelblue"><b>Welcome! </b></h2>
@@ -131,8 +147,6 @@
             The University of Illinois at Chicago. I am currently in IT202 to learn about web technologies such as HTML, CSS, Angular, MySQL and 
             other fun subjects! I have a strong understanding of data structures, algorithms, computation (i.g. time ~ space complexity and language syntax)
             with many mainstream computer languages such as:</p></img>
-        <br>
-        <br>
         <br>
         <br>      ><a style=color:darkcyan><strong>Java</strong></a> - Primary Language
         <br>      ><a style=color:darkcyan><strong>C++</strong></a> - Secondy Language
@@ -148,7 +162,6 @@
         <br>      ><a style=color:darkcyan><strong>SAGE MATH</strong></a> - Scientific Mathematical Computer Language
         <br>      ><a style=color:darkcyan><strong>R</strong></a> - Scientific Statistical Modeling Language
         <br>
-        <br>Thank you for viewing my app!
 
         <div><strong>
           Connect with me on my Linkedin! : <a href = "https://www.linkedin.com/in/ShenHWang">here!</a>
@@ -157,11 +170,6 @@
         </strong></div>
       </div>
     </div>
-
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
-      
 
   
   <script>
