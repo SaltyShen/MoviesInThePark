@@ -10,10 +10,10 @@
       href="img/icon.png">
 
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC7MinVe2U_cNHvcun30I1EDEIUme14pv4&callback=initMap" async defer></script> 
-
+  <!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC7MinVe2U_cNHvcun30I1EDEIUme14pv4&callback=initMap" async defer></script> 
+  -->
    <!-- load angular -->
 	<style>
 		.content {
@@ -70,30 +70,15 @@
         Movies in the Park 2019
       </strong></h1>
       
-      <form id = "input" method = "get" id = "form1">
-        <p> <input type="text" ng-model="query" class="form-control" id = "park" placeholder = "Enter Park Name: "></p>
-        <p> <input type="text" ng-model="query" class="form-control" id = "title" placeholder = "Enter Movie Title: "></p>
-        <p> <input type="text" ng-model="query" class="form-control" id = "day" placeholder="Enter the Day of The Movie: (ig. Fri, Sat, Sun) "></p>
-        <p><button type="submit" value = "Go!"> </button>
+      <script src = "js/moviesdatabase.js"></script>
+
+      <form action="#" id="inputform" onsubmit="return ValidationEvent()">
+        <p> <input type="text" class="form-control" id = "park" placeholder = "Enter Park Name: "></p>
+        <p> <input type="text" class="form-control" id = "title" placeholder = "Enter Movie Title: "></p>
+        <p> <input type="text" class="form-control" id = "day" placeholder="Enter the Day of The Movie: (ig. Fri, Sat, Sun) "></p>
+        <p><button type="submit" value = "Go!">Go!</button>
         Check For Upcoming Movies: <input type = "checkbox" id="upcomingonly"></p>
       </form>
-      
-      <script type="text/javascript">
-      park = $('#park').val();
-      title = $('#title').val();
-      day = $('#day').val();
-      $.getJSON = ("https://data.cityofchicago.org/resource/7piw-z6r6.json", function(data) {
-          console.log(data);
-          var queries = '';
-          $.each(data, function(key, value){
-              queries += '<tr>';
-              queries += '<td>'+value.park+'<td>';
-              queries += '<td>'+value.title+'<td>';
-              queries += '<td>'+value.day+'<td>';
-            });
-            $('#movietable').append(queries);
-        });
-       </script>
 
       <table class = "table" style="width:100%s" id = "movietable">
 
@@ -110,6 +95,7 @@
           <td></td>
 
         </tr>
+        
        </table>
 
      </div>
