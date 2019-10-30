@@ -10,10 +10,9 @@
       href="img/icon.png">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
    crossorigin="anonymous">
+  <script src="js/jquery-3.4.1.min.js"></script>
    
    <!-- load angular -->
-   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
-
 	<style>
 		.content {
 			display: none;
@@ -23,11 +22,9 @@
       image-orientation: from-image;
       float : left;
     }
-    .rotate-90 {
-      -webkit-transform: rotate(-90deg);
-          -ms-transform: rotate(-90deg);
-              transform: rotate(-90deg);
-    }
+    #map {
+        height: 100%;
+      }
 
 	</style>
 
@@ -36,7 +33,7 @@
 <body>
 	<!-- navigation bar -->
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-		<a class="navbar-brand" href="#"><img src="img/icon.png" style="width: 75px; height: 75px;"></a>
+		<a class="navbar-brand" href=#home><img src="img/icon.png" style="width: 50px; height: 50px;"></a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
     </button>
@@ -57,109 +54,109 @@
     </ul>
   </div>
   </nav>
-
   <!-- the content divs -->
+  <div class="content" id="home" style="font-family: 'Courier New', Courier, monospace;">
+      <h2 style="color: steelblue;"><strong>
+        Welcome to my App!
+      </strong></h2>
+  </div>
+
   <div class="content" id="search">
     <div class="container" ng-app="Chicago Movies in the Park" ng-controller="MovieSearch" style="font-family: 'Courier New', Courier, monospace;">
-      <h2>
+      <h2 style="color: steelblue;"><strong>
         Chicago Park District: Movies in the Park 2019
-      </h2>
+      </strong></h2>
+      
+      <form id = "input" method = "get" id = "form1">
+        <p> Park Name: <input type="text" ng-model="query" class="form-control" id = "park"></p>
+        <p> Movie Title: <input type="text" ng-model="query" class="form-control" id = "title"></p>
+        <p> Day of the Week: <input type="text" ng-model="query" class="form-control" id = "day"></p>
+        <p> Check For Upcoming Movies: <input type = "checkbox" id="upcomingonly"></p>
+      </form>
 
-      <p> Park Name: <input type="text" ng-model="query" class="form-control"></p>
-      <p> Movie Title: <input type="text" ng-model="query" class="form-control"></p>
-      <p> Day of the Week: <input type="text" ng-model="query" class="form-control"></p>
-      <p> Check For Current Movies: <input type = "checkbox"></p>
+      <p> <input type="submit" form="form1" value = "Go!"> </button></p>
 
       <table class = "table" style="width:100%s">
+
         <tr>
           <th><a href = "" ng-click="sortBy='date'">Park Name</a></th>
           <th><a href = "" ng-click="sortBy='title'">Title</a></th>
           <th><a href = "" ng-click="sortBy='day'">Day</a></th>
         </tr>
+
         <tr ng-repeat="movie in moviesdatabase | orderBy:sortBy | filter:query ">
+
           <td>{{movie.park}}</td>
           <td>{{movie.title}}</td>
           <td>{{movie.day}}</td>
 
         </tr>
-      </table>
+       </table>
 
-      <script> src="js/moviesdatabase.js"</script>
+      <script src="js/moviesdatabase.js"></script>
     </div>
-  </div>
-    <!--<script>
-        using System;
-        using System.Linq;
-        using SODA;
+   </div>
 
-        var client = new SodaClient("https://data.cityofchicago.org/resource/7piw-z6r6.json", "bnpas9uak5iadao302o2bpoe6");
-        
-        // Get a reference to the resource itself
-        // The result (a Resouce object) is a generic type
-        // The type parameter represents the underlying rows of the resource
-        // and can be any JSON-serializable class
-        var dataset = client.GetResource("e2v8-k3us");
-        
-        // Resource objects read their own data
-        var rows = dataset.GetRows(limit: 5000);
-        
-        Console.WriteLine("Got {0} results. Dumping first results:", rows.Count());
-        
-        foreach (var keyValue in rows.First())
-        {
-            Console.WriteLine(keyValue);
-        }
-    </script>-->
-
-  </div>
   <div class="content" id="history" style="font-family: 'Courier New', Courier, monospace;">
-    <h2>
-      Past Queries
-    </h2>
+      <h2 style="color: steelblue;"><strong>
+        Query
+      </strong></h2>
   </div>
   <div class="content" id="map" style="font-family: 'Courier New', Courier, monospace;">
-      <h2>
-        Map API Here
-      </h2>
+      <h2 style="color: steelblue;"><strong>
+        Query Map
+      </strong></h2>
+
+      <script>
+          var map;
+          function initMap() {
+            map = new google.maps.Map(document.getElementById('map'), {
+              center: {lat: -34.397, lng: 150.644},
+              zoom: 8
+            });
+          }
+       </script>
+
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC7MinVe2U_cNHvcun30I1EDEIUme14pv4&callback=initMap"
+              async defer></script>
     </div>
   <div class="content" id="about">
-      <h2 style = "font-family:'Courier New', Courier, monospace" style="color:midnightblue"><b>Welcome! </b></h2>
+      <h2 style = "font-family:'Courier New', Courier, monospace; color:steelblue"><b>Welcome! </b></h2>
     <div style = "font-family:'Courier New', Courier, monospace">
-      <h4 style = "font-family:'Courier New', Courier, monospace" style="color:dodgerblue"> About Me:  </h4>
+      <h4 style = "font-family:'Courier New', Courier, monospace; color:dodgerblue"> About Me:  </h4>
         <br>
         <br>
         <br>
-        <img src="img/Portrait.JPG" width="300" class="rotate-90" float = "left"/>
+        <img src="img/Portrait.JPG" width="300" height = 470 float = "left"><p> My name is Shen Wang and I am the developer of this web app. I am a Computer Science and Mathematics major currently enrolled at
+            The University of Illinois at Chicago. I am currently in IT202 to learn about web technologies such as HTML, CSS, Angular, MySQL and 
+            other fun subjects! I have a strong understanding of data structures, algorithms, computation (i.g. time ~ space complexity and language syntax)
+            with many mainstream computer languages such as:</p></img>
         <br>
         <br>
         <br>
-        <br>
-        <br>My name is Shen Wang and I am the developer of this web app. I am a Computer Science and Mathematics major currently enrolled at
-        <br>The University of Illinois at Chicago. I am currently in IT202 to learn about web technologies such as HTML, CSS, Angular, MySQL and 
-        <br>other fun things. I have a strong understanding of many of the main computer languages such as:
-        <br>
-        <br>      ><a style=color:darkcyan>Java</a> - Primary Language
-        <br>      ><a style=color:darkcyan>C++</a> - Secondy Language
-        <br>      ><a style=color:darkcyan>Python</a> - Tertiary Language
+        <br>      ><a style=color:darkcyan><strong>Java</strong></a> - Primary Language
+        <br>      ><a style=color:darkcyan><strong>C++</strong></a> - Secondy Language
+        <br>      ><a style=color:darkcyan><strong>Python</strong></a> - Tertiary Language
         <!--<br><img href = "img/javaicon.png" style="width: 50px; height: 50px;"/>
         <br><img href = "img/cppicon.png" style="width: 50px; height: 50px;"/>
         <br><img href = "img/pythonicon.png" style="width: 50px; height: 50px;"/>-->
         <br>
         <br>As well as some computational and functional languages such as:
         <br>
-        <br>      ><a style=color:darkcyan>OCAML</a> - Language Design 
-        <br>      ><a style=color:darkcyan>CGAL</a> - Computational Geometry and Algorithms
-        <br>      ><a style=color:darkcyan>SAGE MATH</a> - Scientific Computer Language for Computation
-        <br>      ><a style=color:darkcyan>R</a> - Statistical Modeling Language
+        <br>      ><a style=color:darkcyan><strong>OCAML</strong></a> - Language Design 
+        <br>      ><a style=color:darkcyan><strong>CGAL</strong></a> - Computational Geometry and Algorithms
+        <br>      ><a style=color:darkcyan><strong>SAGE MATH</strong></a> - Scientific Mathematical Computer Language
+        <br>      ><a style=color:darkcyan><strong>R</strong></a> - Scientific Statistical Modeling Language
         <br>
-        <br><h6>Thank you for viewing my app!</h6>
+        <br>Thank you for viewing my app!
 
         <div><strong>
-          Connect with me on my Linkedin : <a href = "https://www.linkedin.com/in/ShenHWang">here!</a>
+          Connect with me on my Linkedin! : <a href = "https://www.linkedin.com/in/ShenHWang">here!</a>
           <br>Check out my github! : <a href = "https://www.github.com/SaltyShen">SaltyShen@github.com</a>
           <br>Email me at : peterhuiwang1995@gmail.com
         </strong></div>
-</div>
+      </div>
+    </div>
 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
