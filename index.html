@@ -19,14 +19,18 @@
 		.content {
 			display: none;
 			margin: 1em;
+      font-family: 'Courier New', Courier, monospace;
 		}
     .img {
       image-orientation: from-image;
       float : left;
     }
-    #map {
+    .map {
         height: 100%;
       }
+    .nav-item {
+        font-family: 'Courier New', Courier, monospace;
+    }
 
 	</style>
 
@@ -42,28 +46,28 @@
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link" href="#search" style="font-family:'Courier New', Courier, monospace; "><strong>Search </strong><span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="#search"><strong>Search </strong><span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#history" style="font-family: 'Courier New', Courier, monospace;"><strong>History List</strong></a>
+        <a class="nav-link" href="#history"><strong>History List</strong></a>
       </li>
       <li class="nav-item">
-          <a class="nav-link" href="#map" style="font-family: 'Courier New', Courier, monospace;"><strong >Map </strong></a>
+          <a class="nav-link" href="#map"><strong >Map </strong></a>
         </li>
       <li class="nav-item">
-        <a class="nav-link" href="#about" style="font-family: 'Courier New', Courier, monospace;"><strong>About</strong></a>
+        <a class="nav-link" href="#about"><strong>About</strong></a>
       </li>
     </ul>
   </div>
   </nav>
   <!-- the content divs -->
-  <div class="content" id="home" style="font-family: 'Courier New', Courier, monospace;">
+  <div class="content" id="home" >
       <h2 style="color: steelblue;"><strong>
         Welcome to my App!
       </strong></h2>
   </div>
 
-  <div class="content" id="search" style="font-family: 'Courier New', Courier, monospace;">
+  <div class="content" id="search">
     <div class="container" style="font-family: 'Courier New', Courier, monospace;">
       
       <h1 style="color: steelblue;"><strong>
@@ -80,33 +84,36 @@
         Check For Upcoming Movies: <input type = "checkbox" id="upcomingonly"></p>
       </form>
 
-      <table class = "table" style="width:100%s" id = "movietable">
-
-        <tr>
-          <th><a href = "" ng-click = "sortBy = 'date'">Park Name</a></th>
-          <th><a href = "" ng-click = "sortBy = 'title'">Title</a></th>
-          <th><a href = "" ng-click = "sortBy ='day'">Day</a></th>
-        </tr>
-
-        <tr ng-repeat="movie in moviesdatabase | orderBy:sortBy | filter:query ">
-
-          <td></td>
-          <td></td>
-          <td></td>
-
-        </tr>
-        
-       </table>
-
      </div>
    </div>
 
-  <div class="content" id="history" style="font-family: 'Courier New', Courier, monospace;">
+  <div class="content" id="history">
       <h2 style="color: steelblue;"><strong>
         Query
       </strong></h2>
+      <div class="container">
+        <table class = "table" style="width:100%s" id = "movietable">
+          <th>Park</th>
+          <th>Title</th>
+          <th>Day</th>
+      <!--   <tr>
+              <th><a href = "" ng-click = "sortBy = 'date'">Park Name</a></th>
+              <th><a href = "" ng-click = "sortBy = 'title'">Title</a></th>
+              <th><a href = "" ng-click = "sortBy ='day'">Day</a></th>
+            </tr>
+    
+            <tr ng-repeat="movie in moviesdatabase | orderBy:sortBy | filter:query ">
+    
+              <td></td>
+              <td></td>
+              <td></td>
+    
+            </tr> -->
+            
+          </table>
+        </div>
   </div>
-  <div class="content" id="map" style="font-family: 'Courier New', Courier, monospace;">
+  <div class="content" id="map">
       <h2 style="color: steelblue;"><strong>
         Query Map
       </strong></h2>
@@ -123,9 +130,9 @@
 
     </div>
   <div class="content" id="about">
-      <h2 style = "font-family:'Courier New', Courier, monospace; color:steelblue"><b>Welcome! </b></h2>
-    <div style = "font-family:'Courier New', Courier, monospace">
-      <h4 style = "font-family:'Courier New', Courier, monospace; color:dodgerblue"> About Me:  </h4>
+      <h2 style = "color:steelblue"><b>Welcome! </b></h2>
+    <div>
+      <h4 style = "color:dodgerblue"> About Me:  </h4>
         <br>
         <br>
         <br>
