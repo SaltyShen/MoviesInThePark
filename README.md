@@ -1,4 +1,1 @@
-# it202p2
-
-Calls the data from City of Chicago database that provides data for graffiti removal.
-
+Calls the data from City of Chicago database that provides data for movies in the park
