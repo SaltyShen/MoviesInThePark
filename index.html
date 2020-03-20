@@ -77,11 +77,13 @@
       <script src = "js/moviesdatabase.js"></script>
 
       <form action="#" id="inputform" onsubmit="return ValidationEvent()">
-        <p> <input type="text" class="form-control" id = "park" value = "Wicker Park">Park</p>
-        <p> <input type="text" class="form-control" id = "title" value = "Les Miserables (1998)">Title</p>
-        <p> <input type="text" class="form-control" id = "day" value = "Thu">Enter the Day of The Movie: (ig. Fri, Sat, Sun)</p>
-        <p><button type="submit" value = "Go!">Go!</button>
+
+        <p> Park <input type="text" class="form-control" name = "park" placeholder = "Wicker Park" ></p>
+        <p> Title <input type="text" class="form-control" name = "title" placeholder = "Les Miserables (1998)"></p>
+        <p> Enter the Day of The Movie: (ig. Fri, Sat, Sun) <input type="text" class="form-control" name = "day" placeholder = "Thu"></p>
+        
         Check For Upcoming Movies: <input type = "checkbox" id="upcomingonly"></p>
+        <p><button type="submit" value = "Go!">Go!</button>
       </form>
 
      </div>
