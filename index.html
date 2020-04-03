@@ -49,9 +49,6 @@
         <a class="nav-link" href="#search"><strong>Search </strong><span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#history"><strong>History List</strong></a>
-      </li>
-      <li class="nav-item">
           <a class="nav-link" href="#map"><strong >Map </strong></a>
         </li>
       <li class="nav-item">
@@ -76,46 +73,37 @@
       
       <script src = "js/moviesdatabase.js"></script>
 
-      <form action="#" id="inputform" onsubmit="return ValidationEvent()">
+      <form id="inputform" onsubmit="ValidationEvent()">
 
-        <p> Park <input type="text" class="form-control" name = "park" placeholder = "Wicker Park" ></p>
-        <p> Title <input type="text" class="form-control" name = "title" placeholder = "Les Miserables (1998)"></p>
-        <p> Enter the Day of The Movie: (ig. Fri, Sat, Sun) <input type="text" class="form-control" name = "day" placeholder = "Thu"></p>
+        <p> Park <input type="text" class="form-control" id = "park" placeholder = "Wicker Park" ></p>
+        <p> Title <input type="text" class="form-control" id = "title" placeholder = "Les Miserables (1998)"></p>
+        <p> Enter the Day of The Movie: (ig. Fri, Sat, Sun) <input type="text" class="form-control" id = "day" placeholder = "Thu"></p>
         
         Check For Upcoming Movies: <input type = "checkbox" id="upcomingonly"></p>
         <p><button type="submit" value = "Go!">Go!</button>
       </form>
+  
+          <table id = "movieTable" style="width:100%">
+  
+            <thead>
+              <tr>
+                <th>Park Name</th>
+                <th>Title</th>
+                <th>Day</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
 
+              </tr>
+            </tbody>
+  
+            </table>
+  
      </div>
+     
    </div>
 
-  <div class="content" id="history">
-      <h2 style="color: steelblue;"><strong>
-        Query
-      </strong></h2>
-      <div class="container">
-
-        <table class = "table" style="width:100%s" id = "movietable">
-
-          <tr>
-              <th><a href = "" ng-click = "sortBy = 'park'">Park Name</a></th>
-              <th><a href = "" ng-click = "sortBy = 'title'">Title</a></th>
-              <th><a href = "" ng-click = "sortBy ='day'">Day</a></th>
-          </tr>
-    
-            <tr ng-repeat="movie in moviesdatabase | orderBy:sortBy | filter:query">
-    
-              <td></td>
-              <td></td>
-              <td></td>
-    
-            </tr> 
-            
-          </table>
-
-          <p id = "placeholder"> <p>
-        </div>
-  </div>
   <div class="content" id="map">
       <h2 style="color: steelblue;"><strong>
         Query Map
