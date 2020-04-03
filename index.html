@@ -12,7 +12,7 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
-  <!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC7MinVe2U_cNHvcun30I1EDEIUme14pv4&callback=initMap" async defer></script> 
+  <!--<script src=" async defer></script> 
   -->
    <!-- load angular -->
 	<style>
@@ -25,12 +25,14 @@
       image-orientation: from-image;
       float : left;
     }
-    .map {
-        height: 100%;
+    #map {
+        height: 400px;
+        width : 100%;
       }
     .nav-item {
         font-family: 'Courier New', Courier, monospace;
     }
+
 
 	</style>
 
@@ -109,15 +111,29 @@
         Query Map
       </strong></h2>
 
-      <script>
-          var map;
-          function initMap() {
-            map = new google.maps.Map(document.getElementById('map'), {
-              center: {lat: -34.397, lng: 150.644},
-              zoom: 8
-            });
-          }
-       </script>
+    <div id="map"></div>
+
+    <script>
+      function initMap() {
+        // The location of Uluru
+        var uluru = {lat: -25.344, lng: 131.036};
+        // The map, centered at Uluru
+        var map = new google.maps.Map(
+            document.getElementById('map'), {zoom: 4, center: uluru});
+        // The marker, positioned at Uluru
+        var marker = new google.maps.Marker({position: uluru, map: map});
+      }
+    </script>
+
+    <!--Load the API from the specified URL
+    * The async attribute allows the browser to render the page while the API loads
+    * The key parameter will contain your own API key (which is not needed for this tutorial)
+    * The callback parameter executes the initMap() function
+    -->
+    <script async defer 
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyABt32udlivhK89gh4ddwW7a6nqrP4qjTU&callback=initMap">
+    </script>
+
 
     </div>
   <div class="content" id="about">

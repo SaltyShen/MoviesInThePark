@@ -41,29 +41,38 @@ function ValidationEvent() {
 
         }).done(function(data){
             alert("Request Successful! \nFound: " + data.length + " entry points.");
-            let table = document.getElementById("movieTable");
-            let tbody = table.getElementsByTagName('tbody');
-            data.forEach(entry => {
-            //dynamically add to table.
-            let newRow = table.insertRow();
-            let newCell = newRow.insertCell(0);
-            let newText = '<tr><td>${entry[0]}</td> <td>${entry[1]}</td> <td>${entry[0]}</td></tr>';
-            newCell.append(newText);
-            })
-
+            insertData(data);
         })
         .fail(function(){ alert("API Call failed: No data returned.")});
+    }
+function insertData(data){
+
+    let table = document.getElementById("movieTable").getElementsByTagName('tbody')[0];
+    data.forEach(movie => {
+
+        let newRow = table.insertRow(-1);     
+        let parkCell = newRow.insertCell(0);
+        let titleCell = newRow.insertCell(1);
+        let dayCell = newRow.insertCell(2);
+
+        let parkText = document.createTextNode(movie.park);
+        let titleText = document.createTextNode(movie.title);
+        let dayText = document.createTextNode(movie.day);
+
+        parkCell.appendChild(parkText);
+        titleCell.appendChild(titleText);
+        dayCell.appendChild(dayText);
+
+        entireCell = newRow.insertCell();
+        });
+
+
 }
-/*function insertData(data){
 
-    console.log(table.values());
-    //let tbody = table.getElementByTagName('tbody');
-
-    /*data.forEach(entry => {
-        var newRow = tbody.insertRow(table.rows.length-1);
-        var newCell = newRow.insertCell(newRow.cells.length);
-        newCell.innerHTML = "Something";
-    }*/
+    /*data.forEach(entry => )
+    let newRow = tbody.insertRow(table.rows.length-1);
+    var newCell = newRow.insertCell(newRow.cells.length);
+    newCell.innerHTML = "Something";*/
 
 
 
