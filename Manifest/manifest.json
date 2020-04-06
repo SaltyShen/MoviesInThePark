@@ -1,0 +1,16 @@
+{
+    "short_name" : "Movies in The Park",
+    "name": "Movies In The Park",
+    "icon":[
+        {
+            "src":"img/icon.png",
+            "size": "50px",
+            "type": "png"
+        }
+    ],
+    "start_url": "index.html",
+    "background_color": "#4682b4",
+    "Theme_color": "#4682b4",
+    "display": "fullscreen"
+    
+}
