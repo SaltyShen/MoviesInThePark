@@ -28,16 +28,6 @@ function ValidationEvent() {
                 "park" : park
 
             }
-            //success and error method depreciated.
-            //ajax 1.8 uses .done and .fail down below.
-            
-            /*success: function(data){
-                alert("Request Successful! \nFound: " + data.length + " entry points.");
-                //insertData(data);
-            },
-            error: function(){
-                alert("No values found.");
-            }*/
 
         }).done(function(data){
             alert("Request Successful! \nFound: " + data.length + " entry points.");
@@ -64,15 +54,12 @@ function insertData(data){
         dayCell.appendChild(dayText);
 
         entireCell = newRow.insertCell();
-        });
+
+        addMarker(movie);
+    });
 
 
 }
-
-    /*data.forEach(entry => )
-    let newRow = tbody.insertRow(table.rows.length-1);
-    var newCell = newRow.insertCell(newRow.cells.length);
-    newCell.innerHTML = "Something";*/
 
 
 
