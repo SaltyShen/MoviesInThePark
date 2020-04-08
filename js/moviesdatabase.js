@@ -30,7 +30,7 @@ function ValidationEvent() {
             }
 
         }).done(function(data){
-            alert("Request Successful! \nFound: " + data.length + " entry points.");
+            alert("API Call Successful! \nFound: " + data.length + " entry points.");
             insertData(data);
         })
         .fail(function(){ alert("API Call failed: No data returned.")});
