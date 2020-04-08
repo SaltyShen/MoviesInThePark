@@ -12,15 +12,19 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
-  <script src ="js/MapsAPI.js"></script>
-  <script src = "js/moviesdatabase.js"></script>
-
+  <script src="./js/screens.js"></script>
+  <!--<script src=" async defer></script> 
+  -->
+   <!-- load angular -->
 	<style>
 		.content {
 			display: none;
 			margin: 1em;
       font-family: 'Courier New', Courier, monospace;
 		}
+    .container{
+      font-family: 'Courier New', Courier, monospace;
+    }
     .img {
       image-orientation: from-image;
       float : left;
@@ -28,7 +32,6 @@
     #map {
         height: 600px;
         width : 100%;
-        margin : 0px;
       }
     .nav-item {
         font-family: 'Courier New', Courier, monospace;
@@ -37,8 +40,15 @@
       height : 50px;
       width: 100%;
     }
-
-
+    .h2{
+      color:steelblue;
+    }
+    .h4{
+      color:steelblue;
+    }
+    table{
+      color:steelblue;
+    }
 	</style>
 
 </head>
@@ -72,17 +82,20 @@
   </div>
 
   <div class="content" id="search">
-    <div class="container" style="font-family: 'Courier New', Courier, monospace;">
+    <div class="container">
       
       <h1 style="color: steelblue;"><strong>
         Movies in the Park 2019
       </strong></h1>
 
+      <script src ="/js/MapsAPI.js"></script>
+      <script src = "js/moviesdatabase.js"></script>
+
       <form id="inputform" onsubmit="ValidationEvent()">
 
         <p> Park <input type="text" class="form-control" id = "park" placeholder = "Wicker Park" ></p>
         <p> Title <input type="text" class="form-control" id = "title" placeholder = "Les Miserables (1998)"></p>
-        <p> Enter the Day of The Movie: (ig. Fri, Sat, Sun) <input type="text" class="form-control" id = "day" placeholder = "Thu"></p>
+        <p> Day of The Movie: (ig. Fri, Sat, Sun) <input type="text" class="form-control" id = "day" placeholder = "Thu"></p>
         
         Check For Upcoming Movies: <input type = "checkbox" id="upcomingonly"></p>
         <p><button type="submit" value = "Go!">Go!</button>
@@ -116,8 +129,7 @@
     
       
     <div id="map"></div>
-    </script>
-    <script 
+    <script async defer 
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDqxutDgMgV4yZ9LqX0TWf5FUBo7abp6mc&callback=initMap">
     </script>
     <button class="rm" button = "button" onClick="rmMarkers()">Remove All Markers</button>
@@ -125,7 +137,7 @@
   
 
   <div class="content" id="about">
-      <h2 style = "color:steelblue"><b>Welcome! </b></h2>
+      <h2><b>Welcome! </b></h2>
     <div>
       <h4 style = "color:dodgerblue"> About Me:  </h4>
         <br>
@@ -158,31 +170,9 @@
         </strong></div>
       </div>
     </div>
+    <script>
+      hideScreens();
 
-  
-  <script>
-    hideScreens();
-
-
-    function hideScreens() {
-      $(".content").hide();
-    }
-
-
-    $(document).ready(function() {
-
-
-
-      $(".nav-link").on("click", function(){
-        hideScreens();
-        var target = $(this).attr("href");
-        $(target).show();
-        $(target).load("page_content/_" + target.replace("#","") + ".html");
-      });
-
-    });
-  </script>
-
-
+    </script>
   </body>
 </html>
