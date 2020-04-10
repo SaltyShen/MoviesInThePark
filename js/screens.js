@@ -4,7 +4,6 @@ function hideScreens() {
 
 
   $(document).ready(function() {
-
     $(".nav-link").on("click", function(){
       hideScreens();
       var target = $(this).attr("href");

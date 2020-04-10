@@ -106,8 +106,6 @@
   </nav>
   <!-- the content divs -->
   <div class="content" id="home" >
-    <script src ="/js/MapsAPI.js"></script>
-    <script src = "js/moviesdatabase.js"></script>
       <h1 class="titles"><strong>
         Home
       </strong></h1>
@@ -161,11 +159,12 @@
    </div>
 
   <div class="content" id="map">
+    <div>
       <h2 class="titles"><strong>
         Query Map
       </strong></h2>
+    </div>
     
-    <button button = "button" onClick="rmMarkers()" style="margin-top: 5%;">Remove All Markers</button>
     <div id="map"></div>
     <script async defer 
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDqxutDgMgV4yZ9LqX0TWf5FUBo7abp6mc&callback=initMap">
@@ -184,7 +183,7 @@
 
       <div class = "right-text" style=" padding-left: 3%;"> 
       <!-- We want text on right-->
-          <h4 style = "color:dodgerblue; text-align: center;"> About Me  </h4>
+          <h4 style = "text-align: center; font-weight: bold;"> About Me  </h4>
           <p style="text-justify: left; display:block; font-size: small;"> 
             My name is Shen and I am the developer of this web app.I am a Computer Science & Mathematics
             major that is currently learning front-end developement in conjunction with my early engineering 
@@ -194,9 +193,9 @@
           </p>
 
           <div style="text-align: center;">
-            <b><a href="mailto:peterhuiwang1995@gmail.com">Email </a>|</b> 
-            <b><a href = "https://www.github.com/SaltyShen">Github </a>|</b> 
-            <b><a href = "https://www.linkedin.com/in/ShenHWang" >LinkedIn</a></b>
+            <b><a href="mailto:peterhuiwang1995@gmail.com"><img src="img/email.svg" class="lang-icon"></a></b> 
+            <b><a href = "https://www.github.com/SaltyShen"><img src="img/GitHub.png" class="lang-icon"></b> 
+            <b><a href = "https://www.linkedin.com/in/ShenHWang" ><img src="img/linkedin.png" class="lang-icon"></a></b>
           </div>
 
 
@@ -208,7 +207,8 @@
     <script>
       hideScreens();
     </script>
-
+      <script src ="/js/MapsAPI.js"></script>
+      <script src = "js/moviesdatabase.js"></script>
   </body>
 </html>
 

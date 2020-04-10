@@ -1,5 +1,3 @@
-var allMapMarkers = [];
-
 function initMap() {
   var mapOptions = {
     zoom: 12,
@@ -10,7 +8,10 @@ function initMap() {
   // The map
   var map = new google.maps.Map(
     document.getElementById('map'), mapOptions);
+  
+  var allMapMarkers = [];
 
+  alert("map loaded");
 }
 
 function addMarker(newEntry){
