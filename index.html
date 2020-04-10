@@ -9,28 +9,31 @@
       type="image/png" 
       href="img/icon.png">
   <link re="manifest" href="manifest.json">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+                         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" 
+                         crossorigin="anonymous">
   <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
   <script src="./js/screens.js"></script>
 
 	<style>
+    .navbar-toggle {
+    border-color: #ddd;
+    top: 37px;
+}
+
+.navbar-toggle .icon-bar {
+    background-color: #888;
+}
 		.content {
-			display: none;
-			margin: 1em;
+      margin-top:3%;
+      margin-left:3%;
+      margin-right:3%;
       font-family: 'Courier New', Courier, monospace;
 		}
     .container{
       font-family: 'Courier New', Courier, monospace;
     }
-    .img {
-      image-orientation: from-image;
-      float : left;
-    }
-    #map {
-        height: 600px;
-        width : 100%;
-      }
     .nav-item {
         font-family: 'Courier New', Courier, monospace;
     }
@@ -38,15 +41,41 @@
       height : 50px;
       width: 100%;
     }
+    .h1{
+      color:steelblue;
+    }
     .h2{
       color:steelblue;
     }
-    .h4{
-      color:steelblue;
+    .lang-icon{
+      margin-top: 1%;
+      width: 50px;
+      height: 50px;
     }
-    table{
+    .titles{
       color:steelblue;
+      text-align: center;
+      margin: 5%;
     }
+    #portrait-left{
+      padding: 50;
+      display: block;
+      margin-top: 15% auto;
+      margin: 0% auto;
+      max-height: 350px;
+      max-width: 450px;
+    }
+    #map {
+        align-content: center;
+        padding: 0px;
+        height: 600px;
+        width : 100%;
+      }
+    .box{
+      display:flex;
+
+    }
+
 	</style>
 
 </head>
@@ -54,14 +83,17 @@
 <body>
 	<!-- navigation bar -->
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-		<a class="navbar-brand" href=#map><img src="img/icon.png" style="width: 50px; height: 50px;"></a>
+		<a class="navbar-brand" href="#home"><img src="img/icon.png" style="width: 50px; height: 50px;"></img></a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
     </button>
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link" href="#search"><strong>Search </strong><span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="#home"><strong >Home </strong></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#search"><strong>Search </strong><span class="sr-only"></span></a>
       </li>
       <li class="nav-item">
           <a class="nav-link" href="#map"><strong >Map </strong></a>
@@ -74,20 +106,28 @@
   </nav>
   <!-- the content divs -->
   <div class="content" id="home" >
-      <h2 style="color: steelblue;"><strong>
-        Welcome to my App!
-      </strong></h2>
+    <script src ="/js/MapsAPI.js"></script>
+    <script src = "js/moviesdatabase.js"></script>
+      <h1 class="titles"><strong>
+        Home
+      </strong></h1>
+      
+    <div style="text-align: center;">
+      <p> This web app was deployed with:</p>
+        <li><img class="lang-icon" src="img/svg/javascript.svg"></img></li>
+        <li><img class="lang-icon" src="img/svg/html5.svg"></img></li>
+        <li><img class="lang-icon" src="img/svg/css.svg"></img></li>
+        <li><img class="lang-icon" src="img/svg/bootstrap-4.svg"></img></li>
+
+    </div>
   </div>
 
   <div class="content" id="search">
-    <div class="container">
+    <div>
       
-      <h1 style="color: steelblue;"><strong>
+      <h1 class="titles"><strong>
         Movies in the Park 2019
       </strong></h1>
-
-      <script src ="/js/MapsAPI.js"></script>
-      <script src = "js/moviesdatabase.js"></script>
 
       <form id="inputform" onsubmit="ValidationEvent()">
 
@@ -121,54 +161,54 @@
    </div>
 
   <div class="content" id="map">
-      <h2 style="color: steelblue;"><strong>
+      <h2 class="titles"><strong>
         Query Map
       </strong></h2>
     
-      
+    <button button = "button" onClick="rmMarkers()" style="margin-top: 5%;">Remove All Markers</button>
     <div id="map"></div>
     <script async defer 
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDqxutDgMgV4yZ9LqX0TWf5FUBo7abp6mc&callback=initMap">
     </script>
-    <button class="rm" button = "button" onClick="rmMarkers()">Remove All Markers</button>
   </div>
   
 
   <div class="content" id="about">
-      <h2><b>Welcome! </b></h2>
-    <div>
-      <h4 style = "color:dodgerblue"> About Me:  </h4>
-        <br>
-        <br>
-        <br>
-        <img src="img/Portrait.JPG" width="300" height = 470 float = "left"><p> My name is Shen Wang and I am the developer of this web app.I am a Computer Science & Mathematics
-            major that is currently learning front-end developement in conjunction to my engineering background. I'm a Java geek that is inspired by technology and enthusiastic about
-            learning and making cool things. Recently I was inspired to start expanding the breadth of my skill set so I made this website! Thanks for checking this out, if you would
-            like to contact me, all my social links are below. My current skillsets are: 
-            </p></img>
-        <br>
-        <br>      ><a style=color:darkcyan><strong>Java</strong></a> - Primary Language
-        <br>      ><a style=color:darkcyan><strong>Python</strong></a> - Secondy Language
-        <br>      ><a style=color:darkcyan><strong>C++</strong></a> - Tertiary Language
-        <!--<br><img href = "img/javaicon.png" style="width: 50px; height: 50px;"/>
-        <br><img href = "img/cppicon.png" style="width: 50px; height: 50px;"/>
-        <br><img href = "img/pythonicon.png" style="width: 50px; height: 50px;"/>-->
-        <br>
-        <br>      ><a style=color:darkcyan><strong>JavaScript / HTML / CSS</strong></a>
-        <br>      ><a style=color:darkcyan><strong>React.js / Node.js</strong></a> 
-        <br>
-        <br>
-
-        <div><strong>
-          Connect with me on my Linkedin! : <a href = "https://www.linkedin.com/in/ShenHWang">here!</a>
-          <br>Check out my github! : <a href = "https://www.github.com/SaltyShen">SaltyShen@github.com</a>
-          <br>Email me at : peterhuiwang1995@gmail.com
-        </strong></div>
+      <h2 class="titles"><b>Thanks for checking out my app!</b></h2>
+      
+      <div class="box"><!-- Whole div of page-->
+      <div>
+        <img id="portrait-left" alt="Thats me!" src="img/Portrait.JPG" />
+        <!-- We want picture on left-->
       </div>
+
+      <div class = "right-text" style=" padding-left: 3%;"> 
+      <!-- We want text on right-->
+          <h4 style = "color:dodgerblue; text-align: center;"> About Me  </h4>
+          <p style="text-justify: left; display:block; font-size: small;"> 
+            My name is Shen and I am the developer of this web app.I am a Computer Science & Mathematics
+            major that is currently learning front-end developement in conjunction with my early engineering 
+            background. I'm a Java geek that is inspired by technology, enthusiastic about learning and making cool things. 
+            Recently I was inspired to start expanding my front end skill set so I made this website! 
+            Feel free to contact me!
+          </p>
+
+          <div style="text-align: center;">
+            <b><a href="mailto:peterhuiwang1995@gmail.com">Email </a>|</b> 
+            <b><a href = "https://www.github.com/SaltyShen">Github </a>|</b> 
+            <b><a href = "https://www.linkedin.com/in/ShenHWang" >LinkedIn</a></b>
+          </div>
+
+
+      </div>
+
     </div>
+  </div>
+
     <script>
       hideScreens();
-
     </script>
+
   </body>
 </html>
+
