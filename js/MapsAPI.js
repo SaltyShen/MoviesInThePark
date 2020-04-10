@@ -40,8 +40,8 @@ function addMarker(newEntry){
 }
 function rmMarkers(){
 
-  allMapMarkers.forEach(eachMarker => {
-    eachMarker.setMap(null);
+  allMapMarkers.forEach(markers => {
+    markers.setMap(null);
     allMapMarkers.pop();
   });
 
