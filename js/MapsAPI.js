@@ -1,15 +1,4 @@
 function initMap() {
-  var mapOptions = {
-    zoom: 12,
-    center: new google.maps.LatLng(41.881832, -87.623177),
-    mapTypeId: 'roadmap'
-    
-  }
-  // The map
-  var map = new google.maps.Map(
-    document.getElementById('map'), mapOptions);
-  
-  var allMapMarkers = [];
 
   alert("map loaded");
 }
