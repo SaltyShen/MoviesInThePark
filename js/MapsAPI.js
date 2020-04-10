@@ -1,17 +1,10 @@
+var map;
+var allMapMarkers = [];
 function initMap() {
-  var mapOptions = {
-    zoom: 12,
-    center: new google.maps.LatLng(41.881832, -87.623177),
-    mapTypeId: 'roadmap'
-    
-  };
-  // The map
-  var map = new google.maps.Map(
-    document.getElementById('map'), mapOptions);
-  
-  var allMapMarkers = [];
-
-  alert("map loaded");
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: 41.881832, lng: -87.623177},
+    zoom: 8
+  });
 }
 
 function addMarker(newEntry){
