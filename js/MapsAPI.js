@@ -1,10 +1,16 @@
-var map;
 var allMapMarkers = [];
+
 function initMap() {
-  map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: 41.881832, lng: -87.623177},
-    zoom: 8
-  });
+  var mapOptions = {
+    zoom: 12,
+    center: new google.maps.LatLng(41.881832, -87.623177),
+    mapTypeId: 'roadmap'
+    
+  }
+  // The map
+  var map = new google.maps.Map(
+    document.getElementById('map'), mapOptions);
+
 }
 
 function addMarker(newEntry){
@@ -33,8 +39,8 @@ function addMarker(newEntry){
 }
 function rmMarkers(){
 
-  allMapMarkers.forEach(markers => {
-    markers.setMap(null);
+  allMapMarkers.forEach(eachMarker => {
+    eachMarker.setMap(null);
     allMapMarkers.pop();
   });
 
