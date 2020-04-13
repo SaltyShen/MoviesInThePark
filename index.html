@@ -59,7 +59,6 @@
     }
     #portrait-left{
       transform: rotate(90deg);
-      padding: 50;
       display: block;
       margin-top: 0% auto;
       margin: 0% auto;
@@ -76,7 +75,12 @@
       }
     .box{
       display:flex;
-
+      align-items: center;
+      justify-content: center;
+    }
+    .box div {
+      width: 75%;
+      height: 75%;
     }
 
 	</style>
@@ -180,26 +184,25 @@
       
       <div class="box"><!-- Whole div of page-->
       <div>
-        <img id="portrait-left" alt="Thats me!" src="img/svg/Portrait.JPG" />
+        <img id="portrait-left" alt="Thats me!" src="img/Portrait-circle.jpg" />
         <!-- We want picture on left-->
+        <div style="text-align: center; margin-left:30px;">
+          <b><a href="mailto:peterhuiwang1995@gmail.com"><img src="img/email.svg" class="lang-icon"></a></b> 
+          <b><a href = "https://www.github.com/SaltyShen"><img src="img/GitHub.png" class="lang-icon"></b> 
+          <b><a href = "https://www.linkedin.com/in/ShenHWang" ><img src="img/linkedin.png" class="lang-icon"></a></b>
+        </div>
       </div>
 
-      <div class = "right-text" style=" padding-left: 3%;"> 
+      <div class = "right-text"> 
       <!-- We want text on right-->
-          <h4 style = "text-align: center; font-weight: bold;"> About Me  </h4>
-          <p style="text-justify: left; display:block; font-size: small;"> 
+          <h4 style = "font-weight: bold; text-align: center;"> About Me  </h4>
+          <p style="text-justify: left; display:block; font-size: small; max-width: 500px;"> 
             My name is Shen and I am the developer of this web app.I am a Computer Science & Mathematics
             major that is currently learning front-end developement in conjunction with my early engineering 
             background. I'm a Java geek that is inspired by technology, enthusiastic about learning and making cool things. 
-            Recently I was inspired to start expanding my front end skill set so I made this website! 
+            I was inspired to start expanding my front end skill set so I made this website! 
             Feel free to contact me!
           </p>
-
-          <div style="text-align: center;">
-            <b><a href="mailto:peterhuiwang1995@gmail.com"><img src="img/email.svg" class="lang-icon"></a></b> 
-            <b><a href = "https://www.github.com/SaltyShen"><img src="img/GitHub.png" class="lang-icon"></b> 
-            <b><a href = "https://www.linkedin.com/in/ShenHWang" ><img src="img/linkedin.png" class="lang-icon"></a></b>
-          </div>
 
 
       </div>
