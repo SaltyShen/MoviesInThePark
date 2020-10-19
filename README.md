@@ -3,6 +3,8 @@ Calls the data from City of Chicago database that provides data for movies in th
 Finished on April 7 2020
 Update OCT 18 2020 - This is a much  easier project to create in  react than I imagined. I think I can create a really good web app in a week or so considering how little engineering this requires. (Seriously, imagine creating the entire Spotify app in react!? I sure did learn a lot though...) I think I'll update this in React tomorrow. Should take no time. 
 
+I will declare a version 2.0 beta tomorrow!
+
 Added manifest functionality 
 Maps API coordinates with API Query
 Markers can be removed via a button
